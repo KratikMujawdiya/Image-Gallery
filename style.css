@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#wrapper{
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.container{
+    height: 100%;
+    max-width: 1200px;/* maxwidth-kam content daloge to widht utni hi rahegi jyada content daloge to container ka width 1200px tak bad payega usse jyada nhi badega */
+    margin:0 auto;/* isse left side aur right side me is tarah margine lagaya jata hai ki aapka content center me aa jaye(left and right side ka margine exactly equal kiya jata hai */
+    padding: 20px;
+}
+.container h1{
+    margin: 20px 0;/* pehli value "top and bottom se margine and dusri value "right and left se margine ko darshati hai */ 
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+.gallery{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.card{
+    width: 32%;/* isse humne mention kar diya ki ek row ke andar 3 image hi aane vale hai (32+32+32=96) baki 4% space spacing ke liye use hoga /
+     /*height isliye nhi li kyoki jab box banate the flex me to vo heigth puri lete the aur width jo di uske hisab se */
+    position: relative;/* text ko image ke uper overlap karana hai to position ko absolute karna padega iske liye nearest ancesstors ko nonstatic(relative) krna pdega*/
+    margin-bottom: 20px;
+    border-radius: 10px;/* image ke corner rounded karne ke liye iska use kiya */
+    overflow:hidden;
+}
+.card img{
+    width: 100%;
+    filter: grayscale(100%);/* sari image blackandwhite ho gyi */
+    height: 100%;/* isse img ne card ki height leli jisse img ke corner ronded ho gye kyoki card ke rounded kar diye the */
+    box-shadow: 0 0 20px #333;
+    object-fit: cover;/* isse jyada fark nhi padega so chahe to rakh lo aur nhi rakhna to koi bat nhi*/
+}
+.card:hover{
+    transform: scale(1.03);
+    transition: 0.3s;
+    filter: drop-shadow(0 0 10px #333);/* we can also se box-shadow but hare drop-shadow is more effective */
+    /* box-shadow: 0 0 10px #333; */
+}
+.card:hover img{
+    filter: grayscale(0%);/* color vapas lane ke liye */
+}
+.card figcaption{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 25px;
+    width: 100%;
+    height: 20%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    opacity: 0;
+    border-radius: 0 0 10px 10px;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%,rgba(255, 255, 255,0) 100%);
+    transition: 0.3s;
+}
+.card:hover figcaption{
+    opacity: 1;
+    transform: scale(1.03);
+}
